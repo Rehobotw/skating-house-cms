@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-export default  function sidebar(){
-    return(
+export default function Sidebar() {
+    return (
         <div className="sidebar">
             <h2 className="logo">Skating House CMS</h2>
-            <p>Admin Panel</p>
-            <nav class="nav">
+            <p className="admin-label">Admin Panel</p>
+            <nav className="nav">
                 <NavLink to="/dashboard" className="nav-item">
                     Content Management
                 </NavLink>
@@ -19,7 +19,7 @@ export default  function sidebar(){
                     Contact
                 </NavLink>
             </nav>
-            <button className="logout-button">Logout</button>
+            <button className="logout-btn">Logout</button>
         </div>
     );
 }

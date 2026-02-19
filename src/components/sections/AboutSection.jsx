@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 export default function AboutSection(){
     return(
         <div className="card">
-            <h3>Hero</h3>
+            <h3>About</h3>
             <div className="grid-2">
                 <Input label="HEADLINE · EN"/>
                 <Input label="ዋና ርዕስ · AM"/>
@@ -14,11 +14,11 @@ export default function AboutSection(){
                 <TextArea label="BODY · EN"/>
                 <TextArea label="ገለፃ · AM"/>
             </div>
-            <div>
+            <div className="grid-2">
                 <Input label="BUTTON TEXT · EN"/>
                 <Input label="የቁልፍ ጽሑፍ · AM"/>
             </div>
-            <Button>Update</Button>
+            <Button >Update</Button>
         </div>
     );
 }
