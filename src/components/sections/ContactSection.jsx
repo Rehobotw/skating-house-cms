@@ -1,4 +1,3 @@
-import TextArea from "../ui/TextArea";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -8,23 +7,17 @@ export default function ContactSection() {
         <Card title="Contact Information">
             <div className="grid-2">
                 <Input label="Phone numbers" />
-                <Input label="" />
-            </div>
-            <div className="grid-2">
                 <Input label="Email" />
             </div>
-            <div>
+            <div className="grid-2">
                 <Input label="Address" />
-                <Input label="" />
+                <Input label="Opening hours" />
             </div>
-            <h2>Social Links</h2>
-            <div>
+            <h3 className="section-subtitle">Social Links</h3>
+            <div className="social-grid">
                 <Input label="Facebook" />
                 <Input label="TikTok" />
                 <Input label="Telegram" />
-            </div>
-            <div className="grid-2">
-                <Input label="Opening hours" />
             </div>
             <Button>Update</Button>
         </Card>
