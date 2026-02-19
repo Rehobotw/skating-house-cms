@@ -1,24 +1,24 @@
 import TextArea from "../ui/TextArea";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import Card from "../ui/Card";
 
-export default function HeroSection(){
-    return(
-        <div className="card">
-            <h3>Hero</h3>
+export default function HeroSection() {
+    return (
+        <Card title="Hero">
             <div className="grid-2">
-                <Input label="HEADLINE · EN"/>
-                <Input label="ዋና ርዕስ · AM"/>
+                <Input label="HEADLINE · EN" />
+                <Input label="ዋና ርዕስ · AM" />
             </div>
-            <div className="gird-2">
-                <TextArea label="BODY · EN"/>
-                <TextArea label="ገለፃ · AM"/>
+            <div className="grid-2">
+                <TextArea label="BODY · EN" />
+                <TextArea label="ገለፃ · AM" />
             </div>
-            <div>
-                <Input label="BUTTON TEXT · EN"/>
-                <Input label="የቁልፍ ጽሑፍ · AM"/>
+            <div className="grid-2">
+                <Input label="BUTTON TEXT · EN" />
+                <Input label="የቁልፍ ጽሑፍ · AM" />
             </div>
             <Button>Update</Button>
-        </div>
+        </Card>
     );
 }

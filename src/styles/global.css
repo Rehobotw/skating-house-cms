@@ -1,12 +1,27 @@
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
 body{
     margin: 0;
     font-family: sans-serif;
     background-color: #1c1c1c;
     color:white;
+    display: block; /* override index.css flex layout */
+}
+
+#root {
+    max-width: none; /* override App.css constraint */
+    margin: 0;
+    padding: 0;
 }
 .dashboard-layout{
     display: flex;
     height: 100vh;
+    width: 100%;
 }
 
 /*=========
@@ -97,8 +112,9 @@ CARD
 .primary-btn{
     padding:10px 20px;
     background: #d4ff00;
+    color:black;
     border:none;
-    border-radius: 6px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
 }

@@ -9,13 +9,13 @@ export default function Sidebar() {
                 <NavLink to="/dashboard" className="nav-item">
                     Content Management
                 </NavLink>
-                <NavLink to="./services" className="nav-item">
+                <NavLink to="/services" className="nav-item">
                     Services
                 </NavLink>
-                <NavLink to="./pricing" className="nav-item">
+                <NavLink to="/pricing" className="nav-item">
                     Pricing
                 </NavLink>
-                <NavLink to="./contact" className="nav-item">
+                <NavLink to="/contact" className="nav-item">
                     Contact
                 </NavLink>
             </nav>
