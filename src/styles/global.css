@@ -8,7 +8,7 @@ html, body, #root {
 body{
     margin: 0;
     font-family: sans-serif;
-    background-color: #1c1c1c;
+    background-color: #000000; /* pitch black to match artwork */
     color:white;
     display: block; /* override index.css flex layout */
 }
@@ -171,8 +171,12 @@ LOGIN
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #050505;
+    background-color: #000000; /* pitch black to match artwork */
+    background-image: url("../assets/glow.png");
     background-image: url("../assets/background.png");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -187,12 +191,24 @@ LOGIN
     object-fit: contain;
     z-index: 3;
 }
+.login-glow-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("../assets/golw-bg.png");
+    background-repeat: no-repeat;
+    background-position: 105% 100%;
+    background-size: auto 85%;
+}
 .login-form{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 24px;
+    position: relative;
+    z-index: 1;
 }
 .login-card{
     position: relative;
@@ -204,6 +220,7 @@ LOGIN
     box-shadow: 0 26px 60px rgba(0, 0, 0, 0.85);
     overflow: hidden;
     backdrop-filter: blur(14px);
+    text-align: left; /* override root center alignment for headings/labels */
 }
 
 .login-card-inner {
@@ -258,11 +275,12 @@ LOGIN
 }
 
 .login-btn-wrapper {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .login-btn {
-    width: 100%;
+    width: 260px;
     padding: 14px 20px;
     border-radius: 999px;
     border: none;
@@ -271,8 +289,7 @@ LOGIN
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-        background 0.12s ease-out;
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,background 0.12s ease-out;
 }
 
 .login-btn:hover {
@@ -284,4 +301,10 @@ LOGIN
 .login-btn:active {
     transform: translateY(0);
     box-shadow: 0 8px 18px rgba(212, 255, 0, 0.4);
+}
+
+.login-error {
+    margin: 4px 0 18px;
+    font-size: 14px;
+    color: #ff6b6b;
 }
