@@ -59,14 +59,18 @@ SIDE-BAR
   background-color: #d4ff00;
   color: black;
 }
+.logout-link {
+  margin-top: auto;
+  text-decoration: none;
+}
 .logout-btn {
   margin-top: auto;
-  padding: 10px;
+  padding:10px 100px;
   background-color: #d4ff00;
   color: black;
   font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
 }
 /*================

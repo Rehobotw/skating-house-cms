@@ -19,7 +19,10 @@ export default function Sidebar() {
                     Contact
                 </NavLink>
             </nav>
-            <button className="logout-btn">Logout</button>
+            <NavLink to="/login" className="logout-link">
+                <button className="logout-btn">Logout</button>
+            </NavLink>
+            
         </div>
     );
 }

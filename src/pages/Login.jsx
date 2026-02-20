@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.jpg";
+import{NavLink} from "react-router-dom";
 
 const Login = () => {
   return (
@@ -16,9 +17,9 @@ const Login = () => {
           <label htmlFor="">Password</label>
           <input type="password" placeholder="Password" />
         </div>
-        <a href="">
+        <NavLink to="/dashboard" className="nav-item">
           <button className="login-btn">Login</button>
-        </a>
+        </NavLink>
       </div>
     </div>
   );
