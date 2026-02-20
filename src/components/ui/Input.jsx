@@ -1,8 +1,12 @@
-export default function Input({label}){
-    return(
+export default function Input({ label, type = "text", placeholder }) {
+    return (
         <div className="form-group">
-            <label>{label}</label>
-            <input className="input"/>
-        </div>        
+            {label && <label>{label}</label>}
+            <input
+                className="input"
+                type={type}
+                placeholder={placeholder || label}
+            />
+        </div>
     );
 }
