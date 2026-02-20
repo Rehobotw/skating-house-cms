@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo5.jpg";
 import{NavLink} from "react-router-dom";
 
 const Login = () => {
   return (
     <div className="login">
-      <img src={logo} alt="" width={"200px"} />
+      <img src={logo} alt="" width={"200px"} className="logo-img"/>
       <div className="form-container">
         <h1>Super Skate CMS</h1>
         <h2>Admin Login</h2>
