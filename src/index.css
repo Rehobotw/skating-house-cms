@@ -1,1 +1,10 @@
 /* Intentionally left minimal; global styles live in styles/global.css */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  padding: 0;
+  box-sizing: border-box;
+}
