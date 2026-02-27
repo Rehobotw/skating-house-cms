@@ -1,15 +1,15 @@
 import DashboardLayout from "../components/layout/DashboardLayout";
 import PageHeader from "../components/layout/PageHeader";
-import ServiceSection from "../components/sections/ServiceSection";
+import FooterSection from "../components/sections/FooterSection";
 
-export default function Services() {
+export default function Footer() {
     return (
         <DashboardLayout>
             <PageHeader
-                title="Services"
-                subtitle="Manage services section content"
+                title="Footer"
+                subtitle="Manage Footer section"
             />
-            <ServiceSection />
+            <FooterSection />
         </DashboardLayout>
     );
 }

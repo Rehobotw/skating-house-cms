@@ -2,21 +2,54 @@ import TextArea from "../ui/TextArea";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
+import { useEffect,useState } from "react";
 
 export default function HeroSection() {
+    const [hero,setHero]=useState({
+        title:"",
+        content:""
+      });
+    
+      useEffect(()=>{
+        fetch("http://localhost:5000/api/hero")
+        .then((res)=>res.json())
+        .then((data)=>{
+         if (Array.isArray(data)&&data.length>0){
+          setHero(data[0]);
+         }else{
+          setHero(data);
+         }
+      });
+      },[]);
+    
+      const handleChange=(e)=>{
+        const {name,value}=e.target;
+        setHero((prev)=>({
+          ...prev,
+          [name]:value
+        }));
+      };
+      const handleUpdate=()=>{
+        fetch("http://localhost:5000/api/hero",{
+          method:"PUT",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(session)
+        })
+        .then((res)=>res.json())
+        .then((data)=>alert("updated successfully"))
+        .catch((err)=>console.log(err));
+      };
     return (
         <Card title="Hero">
             <div className="grid-2">
-                <Input label="HEADLINE · EN" />
+                <Input label="HEADLINE · EN" value={String(hero?.title||"")} onChange={handleChange}/>
                 <Input label="ዋና ርዕስ · AM" />
             </div>
             <div className="grid-2">
-                <TextArea label="BODY · EN" />
+                <TextArea label="BODY · EN" value={hero.content} onChange={handleChange}/>
                 <TextArea label="ገለፃ · AM" />
-            </div>
-            <div className="grid-2">
-                <Input label="BUTTON TEXT · EN" />
-                <Input label="የቁልፍ ጽሑፍ · AM" />
             </div>
             <Button>Update</Button>
         </Card>

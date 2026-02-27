@@ -17,7 +17,7 @@ const Login = () => {
           <label htmlFor="">Password</label>
           <input type="password" placeholder="Password" />
         </div>
-        <NavLink to="/dashboard" className="nav-item">
+        <NavLink to="/hero" className="nav-item">
           <button className="login-btn">Login</button>
         </NavLink>
       </div>

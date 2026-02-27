@@ -1,7 +1,7 @@
 export default function Input({
     label,
     type = "text",
-    placeholder,
+    // placeholder,
     name,
     value,
     onChange,
@@ -10,16 +10,15 @@ export default function Input({
 
     return (
         <div className="form-group">
-            {label && (
-                <label htmlFor={inputId}>{label}</label>
-            )}
+            {label && <label htmlFor={inputId}>{label}</label>}
+            
             <input
                 id={inputId}
                 name={name}
                 className="input"
                 type={type}
-                placeholder={placeholder || label}
-                value={value}
+                // placeholder={placeholder || label}
+                value={value||""}
                 onChange={onChange}
             />
         </div>

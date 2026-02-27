@@ -142,6 +142,7 @@ CARD
 }
 .primary-btn {
   margin-top: 10px;
+  margin-right: 15px;
   padding: 10px 20px;
   background: #d4ff00;
   color: black;
@@ -282,3 +283,6 @@ LOGIN
   font-size: 1rem;
   font-weight: bold;
 }
+/*=========
+Gallery
+==========*/
