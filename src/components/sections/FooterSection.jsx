@@ -34,7 +34,7 @@ export default function FooterSection() {
       headers:{
         "Content-Type":"application/json"
       },
-      body:JSON.stringify(session)
+      body:JSON.stringify(footer)
     })
     .then((res)=>res.json())
     .then((data)=>alert("updated successfully"))
@@ -44,9 +44,9 @@ export default function FooterSection() {
     <Card title="Footer">
       <h3 className="section-subtitle">Social Links</h3>
       <div className="social-grid">
-        <Input label="Facebook" value={String(footer.socialLinks?.facebook||"")} onChange={handleChange}/>
-        <Input label="TikTok" value={String(footer.socialLinks?.facebook||"")} onChange={handleChange}/>
-        <Input label="Telegram" value={String(footer.socialLinks?.facebook||"")} onChange={handleChange}/>
+        <Input label="Facebook" name="facebook" value={String(footer.socialLinks?.facebook||"")} onChange={handleChange}/>
+        <Input label="TikTok" name="tiktok" value={String(footer.socialLinks?.tiktok||"")} onChange={handleChange}/>
+        <Input label="Telegram" name="telegram" value={String(footer.socialLinks?.telegram||"")} onChange={handleChange}/>
       </div>
       <Button onClick={handleUpdate}>Update</Button>
     </Card>

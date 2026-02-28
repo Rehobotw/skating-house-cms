@@ -6,7 +6,7 @@ export default function Input({
     value,
     onChange,
 }) {
-    const inputId = name || label?.toLowerCase()?.replace(/\s+/g, "-");
+    const inputId = name?.toLowerCase()?.replace(/\s+/g, "-");
 
     return (
         <div className="form-group">

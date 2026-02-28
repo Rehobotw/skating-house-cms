@@ -35,7 +35,7 @@ export default function ContactSection() {
           headers:{
             "Content-Type":"application/json"
           },
-          body:JSON.stringify(session)
+          body:JSON.stringify(contact)
         })
         .then((res)=>res.json())
         .then((data)=>alert("updated successfully"))
@@ -55,11 +55,11 @@ export default function ContactSection() {
                 <Input label="Phone numbers" value={String(contact.socialLinks?.phone||"")} onChange={handleChange}/>
             </div>
             <div className="grid-2">
-                <Input label="Address"value={String(contact.socialLinks?.address||"")} onChange={handleChange} />
-                <Input label="google-map link"value={String(contact.socialLinks?.googleMapLink||"")} onChange={handleChange}/>
+                <Input label="Address" value={String(contact.socialLinks?.address||"")} onChange={handleChange} />
+                <Input label="google-map link" value={String(contact.socialLinks?.googleMapLink||"")} onChange={handleChange}/>
             </div>
             
-            <Button>Update</Button>
+            <Button onClick={handleUpdate}>Update</Button>
         </Card>
     );
 }

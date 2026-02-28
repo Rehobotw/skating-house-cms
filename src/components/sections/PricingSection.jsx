@@ -11,6 +11,7 @@ export default function PricingSection() {
 	  family:{ title: "", body:"" ,price:""}
   });
   useEffect(()=>{
+
     fetch("http://localhost:5000/api/pricing")
     .then((res)=>res.json())
     .then((data)=>{
@@ -23,19 +24,21 @@ export default function PricingSection() {
   },[]);
 
   const handleChange=(e)=>{
+     console.log("handleChange called",e.target.name,e.target.value);
     const {name,value}=e.target;
-    setPricing((prev)=>({
+    setPricing(prev=>({
       ...prev,
       [name]:value
     }));
   };
   const handleUpdate=()=>{
+    e.preventDefault();
     fetch("http://localhost:5000/api/pricing",{
       method:"PUT",
       headers:{
         "Content-Type":"application/json"
       },
-      body:JSON.stringify(session)
+      body:JSON.stringify(pricing)
     })
     .then((res)=>res.json())
     .then((data)=>alert("updated successfully"))
@@ -46,16 +49,16 @@ export default function PricingSection() {
       <div className="pricing-container">
         <Card title="Basic">
           <div className="grid-2">
-            <Input label="HEADLINE · EN" value={String(pricing.basic?.title||"")} onChange={handleChange}/>
+            <Input label="HEADLINE · EN" name="title" value={String(pricing.basic?.title)} onChange={handleChange}/>
             <Input label="ዋና ርዕስ · AM" />
           </div>
           <div className="grid-2">
-                  <Input label="BODY · EN" value={String(pricing.basic?.body||"")} onChange={handleChange}/>
-                  <Input label="ገለፃ · AM" />
+            <Input label="BODY · EN" name="body" value={String(pricing.basic?.body||"")} onChange={handleChange}/>
+            <Input label="ገለፃ · AM" />
           </div>
           <div className="price_section">
             <div className="grid-2">
-              <Input label="price" placeholder={"100"} value={String(pricing.basic?.price||"")} onChange={handleChange}/>
+              <Input label="price" placeholder={"100"} name="price" value={String(pricing.basic?.price||"")} onChange={handleChange}/>
             </div>
             <span className="price">ETB</span>
           </div>
@@ -63,16 +66,16 @@ export default function PricingSection() {
 
         <Card title="Premium">
           <div className="grid-2">
-            <Input label="HEADLINE · EN" value={String(pricing.premium?.title||"")} onChange={handleChange}/>
+            <Input label="HEADLINE · EN" name="title" value={String(pricing.premium?.title||"")} onChange={handleChange}/>
             <Input label="ዋና ርዕስ · AM" />
           </div>
           <div className="grid-2">
-                  <Input label="BODY · EN" value={String(pricing.premium?.body||"")} onChange={handleChange} />
+                  <Input label="BODY · EN" name="body" value={String(pricing.premium?.body||"")} onChange={handleChange} />
                   <Input label="ገለፃ · AM" />
           </div>
           <div className="price_section">
             <div className="grid-2">
-              <Input label="price" placeholder={"100"} value={String(pricing.premium?.price||"")} onChange={handleChange}/>
+              <Input label="price" name="price" placeholder={"100"} value={String(pricing.premium?.price||"")} onChange={handleChange}/>
             </div>
             <span className="price">ETB</span>
           </div>
@@ -80,16 +83,16 @@ export default function PricingSection() {
         
         <Card title="Family">
           <div className="grid-2">
-            <Input label="HEADLINE · EN" value={String(pricing.family?.title||"")} onChange={handleChange}/>
+            <Input label="HEADLINE · EN" name="title" value={String(pricing.family?.title||"")} onChange={handleChange}/>
             <Input label="ዋና ርዕስ · AM" />
           </div>
           <div className="grid-2">
-                  <Input label="BODY · EN" value={String(pricing.family?.body||"")} onChange={handleChange}/>
+                  <Input label="BODY · EN" name="body"value={String(pricing.family?.body||"")} onChange={handleChange}/>
                   <Input label="ገለፃ · AM" />
                 </div>
           <div className="price_section">
             <div className="grid-2">
-              <Input label="price" placeholder={"100"} value={String(pricing.family?.price||"")} onChange={handleChange}/>
+              <Input label="price" name="price"placeholder={"100"} value={String(pricing.family?.price||"")} onChange={handleChange}/>
             </div>
             <span className="price">ETB</span>
           </div>

@@ -34,7 +34,7 @@ export default function AboutSection() {
           headers:{
             "Content-Type":"application/json"
           },
-          body:JSON.stringify(session)
+          body:JSON.stringify(about)
         })
         .then((res)=>res.json())
         .then((data)=>alert("updated successfully"))
@@ -43,7 +43,7 @@ export default function AboutSection() {
     return (
         <Card title="About">
             <div className="grid-2">
-                <TextArea label="BODY · EN" value={about.content} onChange={handleChange} />
+                <TextArea label="BODY · EN" name="content" value={about.content} onChange={handleChange} />
                 <TextArea label="ገለፃ · AM" />
             </div>
             <Button>Update</Button>
