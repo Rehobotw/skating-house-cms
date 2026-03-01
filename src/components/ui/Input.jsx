@@ -19,7 +19,7 @@ export default function Input({
         type={type}
         value={value || ""}
         onChange={onChange}
-        {...props}   // <-- this forwards data-plan and other props
+        {...props}   
       />
     </div>
   );
