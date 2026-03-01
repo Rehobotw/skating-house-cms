@@ -1,104 +1,142 @@
-import TextArea from "../ui/TextArea";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PricingSection() {
-  const [pricing,setPricing]=useState({
-    basic:{ title: "", body:"" ,price:""},
-	  premium:{ title: "", body:"" ,price:""},
-	  family:{ title: "", body:"" ,price:""}
+  const [pricing, setPricing] = useState({
+    basic: { title: "", body: "", price: "" },
+    premium: { title: "", body: "", price: "" },
+    family: { title: "", body: "", price: "" },
   });
-  useEffect(()=>{
 
+  // Fetch pricing data from backend
+  useEffect(() => {
     fetch("http://localhost:5000/api/pricing")
-    .then((res)=>res.json())
-    .then((data)=>{
-     if (Array.isArray(data)&&data.length>0){
-      setPricing(data[0]);
-     }else{
-      setPricing(data);
-     }
-  });
-  },[]);
+      .then((res) => res.json())
+      .then((data) => {
+        const p = Array.isArray(data) ? data[0] : data;
 
-  const handleChange=(e)=>{
-     console.log("handleChange called",e.target.name,e.target.value);
-    const {name,value}=e.target;
-    setPricing(prev=>({
+        setPricing({
+          basic: p.basic || { title: "", body: "", price: "" },
+          premium: p.premium || { title: "", body: "", price: "" },
+          family: p.family || { title: "", body: "", price: "" },
+        });
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value, dataset } = e.target;
+    const plan = dataset.plan;
+
+    setPricing((prev) => ({
       ...prev,
-      [name]:value
+      [plan]: {
+        ...prev[plan],
+        [name]: value,
+      },
     }));
   };
-  const handleUpdate=()=>{
-    e.preventDefault();
-    fetch("http://localhost:5000/api/pricing",{
-      method:"PUT",
-      headers:{
-        "Content-Type":"application/json"
+
+  // Send updated data to backend
+  const handleUpdate = () => {
+    fetch("http://localhost:5000/api/pricing", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(pricing)
+      body: JSON.stringify(pricing),
     })
-    .then((res)=>res.json())
-    .then((data)=>alert("updated successfully"))
-    .catch((err)=>console.log(err));
+      .then((res) => res.json())
+      .then(() => alert("Updated successfully"))
+      .catch((err) => console.log(err));
   };
+
   return (
     <div>
       <div className="pricing-container">
+
+        {/* BASIC */}
         <Card title="Basic">
-          <div className="grid-2">
-            <Input label="HEADLINE · EN" name="title" value={String(pricing.basic?.title)} onChange={handleChange}/>
-            <Input label="ዋና ርዕስ · AM" />
-          </div>
-          <div className="grid-2">
-            <Input label="BODY · EN" name="body" value={String(pricing.basic?.body||"")} onChange={handleChange}/>
-            <Input label="ገለፃ · AM" />
-          </div>
-          <div className="price_section">
-            <div className="grid-2">
-              <Input label="price" placeholder={"100"} name="price" value={String(pricing.basic?.price||"")} onChange={handleChange}/>
-            </div>
-            <span className="price">ETB</span>
-          </div>
+          <Input
+            label="HEADLINE · EN"
+            name="title"
+            data-plan="basic"
+            value={pricing.basic.title}
+            onChange={handleChange}
+          />
+          <Input
+            label="BODY · EN"
+            name="body"
+            data-plan="basic"
+            value={pricing.basic.body}
+            onChange={handleChange}
+          />
+          <Input
+            label="Price"
+            name="price"
+            data-plan="basic"
+            value={pricing.basic.price}
+            onChange={handleChange}
+          />
         </Card>
 
+        {/* PREMIUM */}
         <Card title="Premium">
-          <div className="grid-2">
-            <Input label="HEADLINE · EN" name="title" value={String(pricing.premium?.title||"")} onChange={handleChange}/>
-            <Input label="ዋና ርዕስ · AM" />
-          </div>
-          <div className="grid-2">
-                  <Input label="BODY · EN" name="body" value={String(pricing.premium?.body||"")} onChange={handleChange} />
-                  <Input label="ገለፃ · AM" />
-          </div>
-          <div className="price_section">
-            <div className="grid-2">
-              <Input label="price" name="price" placeholder={"100"} value={String(pricing.premium?.price||"")} onChange={handleChange}/>
-            </div>
-            <span className="price">ETB</span>
-          </div>
+          <Input
+            label="HEADLINE · EN"
+            name="title"
+            data-plan="premium"
+            value={pricing.premium.title}
+            onChange={handleChange}
+          />
+          <Input
+            label="BODY · EN"
+            name="body"
+            data-plan="premium"
+            value={pricing.premium.body}
+            onChange={handleChange}
+          />
+          <Input
+            label="Price"
+            name="price"
+            data-plan="premium"
+            value={pricing.premium.price}
+            onChange={handleChange}
+          />
         </Card>
-        
+
+        {/* FAMILY */}
         <Card title="Family">
-          <div className="grid-2">
-            <Input label="HEADLINE · EN" name="title" value={String(pricing.family?.title||"")} onChange={handleChange}/>
-            <Input label="ዋና ርዕስ · AM" />
-          </div>
-          <div className="grid-2">
-                  <Input label="BODY · EN" name="body"value={String(pricing.family?.body||"")} onChange={handleChange}/>
-                  <Input label="ገለፃ · AM" />
-                </div>
-          <div className="price_section">
-            <div className="grid-2">
-              <Input label="price" name="price"placeholder={"100"} value={String(pricing.family?.price||"")} onChange={handleChange}/>
-            </div>
-            <span className="price">ETB</span>
-          </div>
+          <Input
+            label="HEADLINE · EN"
+            name="title"
+            data-plan="family"
+            value={pricing.family.title}
+            onChange={handleChange}
+          />
+          <Input
+            label="BODY · EN"
+            name="body"
+            data-plan="family"
+            value={pricing.family.body}
+            onChange={handleChange}
+          />
+          <Input
+            label="Price"
+            name="price"
+            data-plan="family"
+            value={pricing.family.price}
+            onChange={handleChange}
+          />
         </Card>
+
       </div>
+
       <Button onClick={handleUpdate}>Update</Button>
     </div>
   );
 }
+
