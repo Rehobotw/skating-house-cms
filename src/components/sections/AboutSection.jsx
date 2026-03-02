@@ -6,7 +6,8 @@ import { useEffect,useState } from "react";
 
 export default function AboutSection() {
      const [about,setAbout]=useState({
-        content:""
+  content:"",
+  content_am:""
       });
     
       useEffect(()=>{
@@ -44,9 +45,9 @@ export default function AboutSection() {
         <Card title="About">
             <div className="grid-2">
                 <TextArea label="BODY · EN" name="content" value={about.content} onChange={handleChange} />
-                <TextArea label="ገለፃ · AM" />
+          <TextArea label="ገለፃ · AM" name="content_am" value={about.content_am || ""} onChange={handleChange} />
             </div>
-            <Button>Update</Button>
+            <Button onClick={handleUpdate}>Update</Button>
         </Card>
     );
 }

@@ -6,7 +6,9 @@ import Card from "../ui/Card";
 export default function SessionSection() {
   const [session,setSession]=useState({
     title:"",
-    content:""
+    content:"",
+    title_am:"",
+    content_am:""
   });
 
   useEffect(()=>{
@@ -45,11 +47,11 @@ export default function SessionSection() {
     <Card title="Session">
       <div className="grid-2">
         <Input label="HEADLINE · EN" name="title" value={String(session?.title||"")} onChange={handleChange} />
-        <Input label="ዋና ርዕስ · AM" />
+        <Input label="ዋና ርዕስ · AM" name="title_am" value={String(session?.title_am||"")} onChange={handleChange} />
       </div>
       <div className="grid-2">
         <Input label="BODY · EN" name="content" value={session.content} onChange={handleChange}/>
-        <Input label="ገለፃ · AM" />
+        <Input label="ገለፃ · AM" name="content_am" value={session.content_am || ""} onChange={handleChange} />
       </div>
       <Button onClick={handleUpdate}>Update</Button>
     </Card>

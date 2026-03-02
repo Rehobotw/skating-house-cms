@@ -42,7 +42,7 @@ export default function PricingSection() {
 
   // Send updated data to backend
   const handleUpdate = () => {
-    fetch("http://localhost:5000/api/pricing", {
+    fetch("http://localhost:5000/api/pricing" ,{
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

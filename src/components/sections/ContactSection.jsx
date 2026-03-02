@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function ContactSection() {
   const [contact, setContact] = useState({
     socialLinks: { facebook: "", tiktok: "", telegram: "" },
-    ContactAdress: { phone: "", address: "", googleMapLink: "" },
+    contactAddress: { phone: "", address: "", googleMapLink: "" },
   });
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export default function ContactSection() {
     } else {
       setContact((prev) => ({
         ...prev,
-        ContactAdress: {
-          ...prev.ContactAdress,
+        contactAddress: {
+          ...prev.contactAddress,
           [name]: value,
         },
       }));
@@ -86,7 +86,7 @@ export default function ContactSection() {
         <Input
           label="Phone numbers"
           name="phone"
-          value={contact.ContactAdress?.phone || ""}
+          value={contact.contactAddress?.phone || ""}
           onChange={handleChange}
         />
       </div>
@@ -95,13 +95,13 @@ export default function ContactSection() {
         <Input
           label="Address"
           name="address"
-          value={contact.ContactAdress?.address || ""}
+          value={contact.contactAddress?.address || ""}
           onChange={handleChange}
         />
         <Input
           label="Google Map link"
           name="googleMapLink"
-          value={contact.ContactAdress?.googleMapLink || ""}
+          value={contact.contactAddress?.googleMapLink || ""}
           onChange={handleChange}
         />
       </div>

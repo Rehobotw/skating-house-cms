@@ -15,11 +15,11 @@ export default function Input({
       <input
         id={inputId}
         name={name}
-        className="input"
         type={type}
-        value={value || ""}
+        className="input"
+        value={value ?? ""}
         onChange={onChange}
-        {...props}   
+        {...props}
       />
     </div>
   );
